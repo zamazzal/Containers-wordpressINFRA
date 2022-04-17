@@ -1,0 +1,39 @@
+
+version: "3.3"
+services:
+    mariadb:
+        build: ./mariadb
+        container_name: mariadb
+        ports:
+            - '3306:3306'
+        volumes:
+            - /home/zamazzal/data/inception_database:/var/lib/mysql
+        environment:
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        restart: always
+        networks:
+        - backend
+    wordpress:
+        build: ./wordpress
+        container_name: wordpress
+        ports:
+            - '9000:9000'
+        volumes:
+            - ./volume-files:/var/www/html
+        environment:
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX}
+            - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        depends_on:
+            - mariadb
+        restart: always
+        networks:
+            - backend
+
+networks:
+  backend:
+  frontend:
