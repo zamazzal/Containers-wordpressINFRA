@@ -21,7 +21,7 @@ services:
         ports:
             - '9000:9000'
         volumes:
-            - ./volume-files:/var/www/html
+            - /home/zamazzal/data/inception_website:/var/www/html/wordpress
         environment:
             - MYSQL_DATABASE=${MYSQL_DATABASE}
             - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX}
@@ -33,6 +33,17 @@ services:
         restart: always
         networks:
             - backend
+    nginx:
+        build: ./nginx
+        # volumes:
+        #     - ./nginx/srcs:/etc/nginx/conf.d
+        #     - ./logs/nginx:/var/log/nginx
+        #     - ./wordpress:/var/www/html
+        # depends_on:
+        #     - wordpress
+        restart: always
+        networks:
+        - backend
 
 networks:
   backend:
