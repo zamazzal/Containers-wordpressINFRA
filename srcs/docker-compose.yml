@@ -35,12 +35,18 @@ services:
             - backend
     nginx:
         build: ./nginx
-        # volumes:
-        #     - ./nginx/srcs:/etc/nginx/conf.d
-        #     - ./logs/nginx:/var/log/nginx
-        #     - ./wordpress:/var/www/html
-        # depends_on:
-        #     - wordpress
+        container_name: nginx
+        ports:
+            - '443:443'
+        volumes:
+            - /home/zamazzal/data/inception_certifs:/etc/nginx/certifs
+            - /home/zamazzal/data/inception_website:/var/www/html/wordpress
+        environment:
+            - DOMAIN_NAME=${DOMAIN_NAME}
+            - CERTS=${CERTS}
+            - CERTS_KEY=${CERTS_KEY}
+        depends_on:
+            - wordpress
         restart: always
         networks:
         - backend
