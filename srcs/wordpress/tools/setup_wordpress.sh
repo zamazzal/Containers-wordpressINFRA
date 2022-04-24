@@ -1,10 +1,10 @@
 
 #!/bin/bash
-if [ ! -f "/var/www/html/wordpress/wp-config.php" ]; then
+if [ ! -f "/var/www/wordpress/wp-config.php" ]; then
 
-mkdir -p /var/www/html/wordpress
-tar xzf /tmp/latest.tar.gz --strip-components=1 -C /var/www/html/wordpress/
-cp /var/www/html/wordpress/wp-config{-sample,}.php
+mkdir -p /var/www/wordpress
+tar xzf /tmp/latest.tar.gz --strip-components=1 -C /var/www/wordpress/
+cp /var/www/wordpress/wp-config{-sample,}.php
 
 echo "<?php
 define( 'DB_NAME', '$MYSQL_DATABASE' );
@@ -20,11 +20,12 @@ define( 'WP_DEBUG', false );
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
 }
-" >  /var/www/html/wordpress/wp-config.php
+" >  /var/www/wordpress/wp-config.php
 
-curl -s https://api.wordpress.org/secret-key/1.1/salt/ >> /var/www/html/wordpress/wp-config.php
-
+curl -s https://api.wordpress.org/secret-key/1.1/salt/ >> /var/www/wordpress/wp-config.php
+cp /tmp/index.html /var/www/wordpress/index.html
 fi
-chown -R www-data:www-data  /var/www/html/wordpress
+
+chown -R www-data:www-data  /var/www/wordpress
 
 /usr/sbin/php-fpm7.3 -FR
