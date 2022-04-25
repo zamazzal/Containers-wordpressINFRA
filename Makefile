@@ -13,4 +13,7 @@ clean:
 	docker-compose -f $(DOCKERCOMPOSE_PATH) --env-file $(ENVVAR_PATH) down
 	sudo rm -rf /home/zamazzal/data/
 
+init:
+	sudo echo "127.0.0.1	$(USERNAME).42.fr" >> /etc/hosts
+
 re: clean all

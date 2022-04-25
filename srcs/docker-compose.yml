@@ -29,6 +29,11 @@ services:
             - WORDPRESS_DB_HOST=mariadb
             - MYSQL_USER=${MYSQL_USER}
             - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            - WORDPRESS_ADMIN_PASS=${WORDPRESS_ADMIN_PASS}
+            - WORDPRESS_ADMIN_MAIL=${WORDPRESS_ADMIN_MAIL}
+            - WORDPRESS_AUTHOR_MAIL=${WORDPRESS_AUTHOR_MAIL}
+            - WORDPRESS_AUTHOR_PASS=${WORDPRESS_AUTHOR_PASS}
+            - DOMAIN_NAME=${DOMAIN_NAME}
         depends_on:
             - mariadb
         restart: always

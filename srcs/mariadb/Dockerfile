@@ -11,4 +11,4 @@ RUN chmod +x /tmp/setup_db.sh
 
 EXPOSE 3306
 
-ENTRYPOINT [ "sh", "/tmp/setup_db.sh" ]
+ENTRYPOINT [ "bash", "/tmp/setup_db.sh" ]

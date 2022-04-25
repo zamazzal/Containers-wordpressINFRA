@@ -27,6 +27,16 @@ require_once ABSPATH . 'wp-settings.php';
 " >> /var/www/wordpress/wp-config.php
 
 cp /tmp/index.html /var/www/wordpress/index.html
+
+OUTPUT="Can't connect"
+while [[ $OUTPUT == *"Can't connect"* ]]
+do
+    OUTPUT=$(mariadb -h$WORDPRESS_DB_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE <  /tmp/test.sql 2>&1)
+	sleep 1
+done
+sleep 5
+wp core install --allow-root --url=$DOMAIN_NAME --title=inception --admin_user=wordpress_user1 --admin_password=$WORDPRESS_ADMIN_PASS --admin_email=$WORDPRESS_ADMIN_MAIL --skip-email --path=/var/www/wordpress/
+wp user create wordpress_user2 $WORDPRESS_AUTHOR_MAIL --user_pass=$WORDPRESS_AUTHOR_PASS --role=author --allow-root --url=$DOMAIN_NAME --path=/var/www/wordpress/ --porcelain
 fi
 
 chown -R www-data:www-data  /var/www/wordpress
