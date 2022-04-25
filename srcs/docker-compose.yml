@@ -12,6 +12,7 @@ services:
             - MYSQL_DATABASE=${MYSQL_DATABASE}
             - MYSQL_USER=${MYSQL_USER}
             - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX}
         restart: always
         networks:
         - backend
@@ -25,7 +26,7 @@ services:
         environment:
             - MYSQL_DATABASE=${MYSQL_DATABASE}
             - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX}
-            - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
+            - WORDPRESS_DB_HOST=mariadb
             - MYSQL_USER=${MYSQL_USER}
             - MYSQL_PASSWORD=${MYSQL_PASSWORD}
         depends_on:

@@ -13,10 +13,10 @@ RUN rm -f /etc/nginx/sites-enabled/default
 
 COPY config/inception.conf /etc/nginx/sites-enabled/inception.php
 
-RUN sed -i "s|.*server_name\s*=.*|server_name=$DOMAIN_NAME|g" /etc/nginx/sites-enabled/inception.php
-RUN sed -i "s|.*ssl_certificate\s*=.*|server_name=$CERT|g" /etc/nginx/sites-enabled/inception.php
-RUN sed -i "s|.*ssl_certificate_key\s*=.*|server_name=$CERT_KEY|g" /etc/nginx/sites-enabled/inception.php
+COPY tools/setup_nginx.sh /tmp/setup_nginx.sh
+
+RUN chmod +x /tmp/setup_nginx.sh
 
 EXPOSE 443
 
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT [ "sh", "/tmp/setup_nginx.sh" ]
