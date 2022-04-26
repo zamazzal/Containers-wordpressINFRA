@@ -57,5 +57,19 @@ services:
         networks:
         - backend
 
+    ftpserver:
+        build: ./bonus/FTPServer
+        container_name: ftpserver
+        ports:
+            - '21:21'
+        volumes:
+            - /home/zamazzal/data/inception_website:/home/wordpress
+        environment:
+            - WORDPRESS_ADMIN_USER=${WORDPRESS_ADMIN_USER}
+            - WORDPRESS_AUTHOR_USER=${WORDPRESS_AUTHOR_USER}
+            - FTP_USER=${FTP_USER}
+            - FTP_PASSWORD=${FTP_PASSWORD}
+        restart: always
+
 networks:
   backend:

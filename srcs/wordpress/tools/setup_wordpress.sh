@@ -35,8 +35,8 @@ do
 	sleep 1
 done
 sleep 5
-wp core install --allow-root --url=$DOMAIN_NAME --title=inception --admin_user=wordpress_user1 --admin_password=$WORDPRESS_ADMIN_PASS --admin_email=$WORDPRESS_ADMIN_MAIL --skip-email --path=/var/www/wordpress/
-wp user create wordpress_user2 $WORDPRESS_AUTHOR_MAIL --user_pass=$WORDPRESS_AUTHOR_PASS --role=author --allow-root --url=$DOMAIN_NAME --path=/var/www/wordpress/ --porcelain
+wp core install --allow-root --url=$DOMAIN_NAME --title=inception --admin_user=$WORDPRESS_ADMIN_USER --admin_password=$WORDPRESS_ADMIN_PASS --admin_email=$WORDPRESS_ADMIN_MAIL --skip-email --path=/var/www/wordpress/
+wp user create $WORDPRESS_AUTHOR_USER $WORDPRESS_AUTHOR_MAIL --user_pass=$WORDPRESS_AUTHOR_PASS --role=author --allow-root --url=$DOMAIN_NAME --path=/var/www/wordpress/ --porcelain
 fi
 
 chown -R www-data:www-data  /var/www/wordpress
