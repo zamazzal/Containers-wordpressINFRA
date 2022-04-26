@@ -2,7 +2,7 @@ FROM debian:buster
 
 RUN apt-get update && apt-get upgrade -y
 
-RUN apt install -y vsftpd -y
+RUN apt install -y vsftpd
 
 COPY conf/vsftpd.conf /etc/vsftpd.conf
 

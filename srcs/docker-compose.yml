@@ -71,5 +71,14 @@ services:
             - FTP_PASSWORD=${FTP_PASSWORD}
         restart: always
 
+    redis:
+        build: ./bonus/redis
+        container_name: redis
+        expose:
+            - "6379"
+        restart: always
+        networks:
+        - backend
+
 networks:
   backend:
