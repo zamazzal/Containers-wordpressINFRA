@@ -50,6 +50,7 @@ services:
         volumes:
             - /home/zamazzal/data/inception_certifs:/etc/nginx/certifs
             - /home/zamazzal/data/inception_website:/var/www/wordpress
+            - /home/zamazzal/data/bonus/adminer:/var/www/adminer
         environment:
             - DOMAIN_NAME=${DOMAIN_NAME}
             - CERTS=${CERTS}
@@ -80,6 +81,19 @@ services:
         restart: always
         networks:
         - backend
+
+    adminer:
+        build: ./bonus/adminer
+        container_name: adminer
+        expose:
+            - '9001'
+        volumes:
+            - /home/zamazzal/data/bonus/adminer:/var/www/adminer
+        depends_on:
+            - mariadb
+        restart: always
+        networks:
+            - backend
 
 networks:
   backend:

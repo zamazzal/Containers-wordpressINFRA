@@ -9,9 +9,11 @@ RUN mkdir /etc/nginx/ssl && \
     chmod 700 /etc/nginx/ssl && \
     openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout /etc/nginx/ssl/inception.key -out /etc/nginx/ssl/inception.cert -subj '/CN=MA'
 
-RUN rm -f /etc/nginx/sites-enabled/default
+RUN rm -f /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
 
-COPY config/inception.conf /etc/nginx/sites-enabled/inception.php
+COPY config/inception.conf /etc/nginx/sites-enabled/inception.conf
+COPY config/adminer.conf /etc/nginx/sites-enabled/adminer.conf
+# COPY config/inception.conf /etc/nginx/sites-enabled/staticweb.conf
 
 COPY tools/setup_nginx.sh /tmp/setup_nginx.sh
 
