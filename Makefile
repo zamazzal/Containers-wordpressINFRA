@@ -11,11 +11,6 @@ stop :
 	docker-compose -f $(DOCKERCOMPOSE_PATH) --env-file $(ENVVAR_PATH) stop
 clean:
 	docker-compose -f $(DOCKERCOMPOSE_PATH) --env-file $(ENVVAR_PATH) down
-	sudo rm -rf /home/zamazzal/data/
-
-init:
-	sudo echo "127.0.0.1	$(USERNAME).42.fr" >> /etc/hosts
-	sudo echo "127.0.0.1	adminer-$(USERNAME).42.fr" >> /etc/hosts
-	sudo echo "127.0.0.1	staticweb-$(USERNAME).42.fr" >> /etc/hosts
+	rm -rf /home/zamazzal/data/
 
 re: clean all
