@@ -7,4 +7,5 @@ fi
 chown -R www-data:www-data /var/www/adminer/
 chmod 755 /var/www/adminer/
 
+echo "starting php-fpm:adminer..."
 /usr/sbin/php-fpm7.3 -FR

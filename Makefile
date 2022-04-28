@@ -9,8 +9,8 @@ start :
 	docker-compose -f $(DOCKERCOMPOSE_PATH) --env-file $(ENVVAR_PATH) start
 stop :
 	docker-compose -f $(DOCKERCOMPOSE_PATH) --env-file $(ENVVAR_PATH) stop
-clean:
+clean :
 	docker-compose -f $(DOCKERCOMPOSE_PATH) --env-file $(ENVVAR_PATH) down
 	rm -rf /home/zamazzal/data/
 
-re: clean all
+re: clean all stop start

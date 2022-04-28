@@ -17,4 +17,5 @@ echo "127.0.0.1	$DOMAIN_NAME" >> /etc/hosts
 echo "127.0.0.1	$ADMINER_DOMAIN_NAME" >> /etc/hosts
 echo "127.0.0.1	$STATICWEB_DOMAIN_NAME" >> /etc/hosts
 
+echo "starting nginx..."
 nginx -g 'daemon off;'

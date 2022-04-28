@@ -14,5 +14,5 @@ else
     chmod -R 777 /home/wordpress
     usermod -d /home/wordpress/ $FTP_USER
 fi
-
+echo "starting vsftpd..."
 /usr/sbin/vsftpd /etc/vsftpd.conf

@@ -49,4 +49,5 @@ chown -R www-data:www-data  /var/www/wordpress
 chown -R 777 /var/www/wordpress/*
 chmod -R 777 /var/www/wordpress/*
 
+echo "starting php-fpm:wordpress..."
 /usr/sbin/php-fpm7.3 -FR

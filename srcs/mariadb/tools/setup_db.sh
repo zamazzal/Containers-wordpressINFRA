@@ -41,7 +41,5 @@ fi
 /etc/init.d/mysql stop
 
 # You can start the MariaDB daemon with:
+echo "starting mysql..."
 exec /usr/bin/mysqld_safe --user=mysql --datadir='/var/lib/mysql'
-
-# You can test the MariaDB daemon with mysql-test-run.pl
-# cd '/usr/mysql-test' ; perl mysql-test-run.pl
