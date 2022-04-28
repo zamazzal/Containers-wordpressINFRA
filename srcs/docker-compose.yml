@@ -15,7 +15,7 @@ services:
             - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX}
         restart: always
         networks:
-        - backend
+        - inception
     wordpress:
         build: ./wordpress
         container_name: wordpress
@@ -41,7 +41,7 @@ services:
             - mariadb
         restart: always
         networks:
-            - backend
+            - inception
     nginx:
         build: ./nginx
         container_name: nginx
@@ -59,7 +59,7 @@ services:
             - wordpress
         restart: always
         networks:
-        - backend
+        - inception
 
     ftpserver:
         build: ./bonus/FTPServer
@@ -80,7 +80,7 @@ services:
             - "6379"
         restart: always
         networks:
-        - backend
+        - inception
 
     adminer:
         build: ./bonus/adminer
@@ -93,7 +93,20 @@ services:
             - mariadb
         restart: always
         networks:
-            - backend
+            - inception
+
+    gitwatch:
+        build: ./bonus/gitwatch
+        container_name: gitwatch
+        volumes:
+            - /home/zamazzal/data/inception_website:/var/www/wordpress
+        environment:
+            - GIT_REMOTE=${GIT_REMOTE}
+            - GIT_BRANCH=${GIT_BRANCH}
+            - GIT_AUTHOR=${GIT_AUTHOR}
+        depends_on:
+            - wordpress
+        restart: always
 
 networks:
-  backend:
+  inception:
