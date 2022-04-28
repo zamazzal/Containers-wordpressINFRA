@@ -11,6 +11,7 @@ RUN mkdir -p /home/staticweb
 WORKDIR /home/staticweb
 
 COPY config/index.py /home/staticweb/index.py
+COPY config/static /home/staticweb/static
 
 ENV FLASK_APP=/home/staticweb/index.py
 ENV FLASK_ENV=development
