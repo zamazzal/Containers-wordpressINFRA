@@ -13,7 +13,7 @@ RUN rm -f /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
 
 COPY config/inception.conf /etc/nginx/sites-enabled/inception.conf
 COPY config/adminer.conf /etc/nginx/sites-enabled/adminer.conf
-# COPY config/inception.conf /etc/nginx/sites-enabled/staticweb.conf
+COPY config/staticweb.conf /etc/nginx/sites-enabled/staticweb.conf
 
 COPY tools/setup_nginx.sh /tmp/setup_nginx.sh
 

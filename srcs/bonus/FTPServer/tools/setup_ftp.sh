@@ -11,7 +11,7 @@ else
     echo "$FTP_USER:$FTP_PASSWORD" | /usr/sbin/chpasswd > /dev/null
     chown -R $FTP_USER:$FTP_USER /home/wordpress
     chmod a-w -R /home/wordpress
-    chmod -R 775 /home/wordpress
+    chmod -R 777 /home/wordpress
     usermod -d /home/wordpress/ $FTP_USER
 fi
 

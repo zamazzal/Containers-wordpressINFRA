@@ -8,7 +8,6 @@ git add .
 git commit -m "gitwatch sync"
 git branch -M $GIT_BRANCH
 git remote add origin $GIT_BRANCH
-git push $GIT_REMOTE $GIT_BRANCH
+git push -f $GIT_REMOTE $GIT_BRANCH
 fi
-
 gitwatch -r $GIT_REMOTE -b $GIT_BRANCH /var/www/wordpress/

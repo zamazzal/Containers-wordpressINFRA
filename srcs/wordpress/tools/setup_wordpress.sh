@@ -46,6 +46,7 @@ fi
 wp redis enable --allow-root --path=/var/www/wordpress/
 
 chown -R www-data:www-data  /var/www/wordpress
-chown -R 755 /var/www/wordpress/*
+chown -R 777 /var/www/wordpress/*
+chmod -R 777 /var/www/wordpress/*
 
 /usr/sbin/php-fpm7.3 -FR

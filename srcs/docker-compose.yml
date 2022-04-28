@@ -53,6 +53,8 @@ services:
             - /home/zamazzal/data/bonus/adminer:/var/www/adminer
         environment:
             - DOMAIN_NAME=${DOMAIN_NAME}
+            - ADMINER_DOMAIN_NAME=${ADMINER_DOMAIN_NAME}
+            - STATICWEB_DOMAIN_NAME=${STATICWEB_DOMAIN_NAME}
             - CERTS=${CERTS}
             - CERTS_KEY=${CERTS_KEY}
         depends_on:
@@ -71,6 +73,8 @@ services:
         environment:
             - FTP_USER=${FTP_USER}
             - FTP_PASSWORD=${FTP_PASSWORD}
+        depends_on:
+            - wordpress
         restart: always
 
     redis:
@@ -107,6 +111,15 @@ services:
         depends_on:
             - wordpress
         restart: always
+
+    staticweb:
+        build: ./bonus/staticweb
+        container_name: staticweb
+        expose:
+            - "3000"
+        restart: always
+        networks:
+            - inception
 
 networks:
   inception:

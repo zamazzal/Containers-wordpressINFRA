@@ -15,5 +15,7 @@ clean:
 
 init:
 	sudo echo "127.0.0.1	$(USERNAME).42.fr" >> /etc/hosts
+	sudo echo "127.0.0.1	adminer-$(USERNAME).42.fr" >> /etc/hosts
+	sudo echo "127.0.0.1	staticweb-$(USERNAME).42.fr" >> /etc/hosts
 
 re: clean all
