@@ -43,4 +43,4 @@ mysqladmin shutdown -u root -p$MYSQL_ROOT_PASSWORD
 
 # You can start the MariaDB daemon with:
 echo "starting mysql..."
-exec /usr/bin/mysqld_safe --user=mysql --skip-grant-tables --datadir='/var/lib/mysql'
+exec /usr/bin/mysqld_safe --user=mysql --datadir='/var/lib/mysql'
