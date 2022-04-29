@@ -13,6 +13,7 @@ services:
             - MYSQL_USER=${MYSQL_USER}
             - MYSQL_PASSWORD=${MYSQL_PASSWORD}
             - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX}
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
         restart: always
         networks:
         - inception
